@@ -152,7 +152,7 @@ Evitar:
 
 - Imagen o composición visual grande.
 - Nombre y categoría debajo.
-- Precio alineado a la derecha.
+- Enlace `Ver ficha` alineado a la derecha.
 - Etiquetas como `Novedad` o `Destacada` en lima, naranja o negro.
 - La tarjeta completa debe ser clicable.
 
@@ -168,7 +168,7 @@ Evitar:
 - Usar una retícula de 8 px: `8, 16, 24, 32, 48, 64, 96`.
 - Contenido máximo recomendado: `1180 px`.
 - Separar secciones con aire; la marca debe sentirse editorial, no apretada.
-- En móvil, priorizar producto, precio, tallas y WhatsApp.
+- En móvil, priorizar producto, nombre, tallas y WhatsApp.
 - El logo completo puede reducirse, pero nunca debe competir visualmente con el nombre del producto.
 
 ## 8. Voz de marca
@@ -196,7 +196,7 @@ Ejemplos:
 
 - [ ] Se utiliza `FutStreetNoFondo.png` como logo oficial.
 - [ ] El número de WhatsApp está actualizado.
-- [ ] Cada producto tiene nombre, precio, tallas y disponibilidad clara.
+- [ ] Cada producto tiene nombre, descripción, tallas y ficha clara.
 - [ ] Las imágenes son propias o tienen licencia de uso.
 - [ ] Las páginas legal, privacidad, cookies y devoluciones están completadas.
 - [ ] La web se revisa en móvil antes de publicar.

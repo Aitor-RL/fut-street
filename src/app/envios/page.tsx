@@ -1,2 +1,2 @@
 import { Navbar } from "@/components/Navbar"; import { Footer } from "@/components/Footer";
-export default function EnviosPage() { return <><Navbar /><main className="simple-page shell"><p className="eyebrow">Información</p><h1>Envíos y devoluciones.</h1><p>Estamos preparando cada pedido de forma personalizada. Escríbenos por WhatsApp para consultar disponibilidad, tiempos y opciones de entrega.</p></main><Footer /></>; }
+export default function EnviosPage() { return <><Navbar /><main className="simple-page shell"><p className="eyebrow">Información</p><h1>Cuidado de prendas.</h1><p>Para mantener tus camisetas FUT STREET en buen estado, lávalas del revés con agua fría, evita la secadora y no planches directamente sobre los estampados.</p></main><Footer /></>; }
