@@ -1,0 +1,2 @@
+import { Navbar } from "@/components/Navbar"; import { Footer } from "@/components/Footer";
+export default function EnviosPage() { return <><Navbar /><main className="simple-page shell"><p className="eyebrow">Información</p><h1>Envíos y devoluciones.</h1><p>Estamos preparando cada pedido de forma personalizada. Escríbenos por WhatsApp para consultar disponibilidad, tiempos y opciones de entrega.</p></main><Footer /></>; }

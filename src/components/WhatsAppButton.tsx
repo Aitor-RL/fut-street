@@ -1,0 +1,2 @@
+import { getWhatsAppLink } from "@/lib/whatsapp";
+export function WhatsAppButton({ productName }: { productName?: string }) { const message = productName ? `Hola, quiero consultar disponibilidad de ${productName}.` : undefined; return <a className="whatsapp-button" href={getWhatsAppLink(message)} target="_blank" rel="noreferrer"><span className="whatsapp-icon">◌</span> Consultar por WhatsApp <span>↗</span></a>; }

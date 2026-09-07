@@ -1,0 +1,3 @@
+import Link from "next/link";
+import Image from "next/image";
+export function Navbar() { return <header className="site-header"><div className="shell nav-inner"><Link href="/" className="brand logo-brand" aria-label="FUT STREET, inicio"><Image src="/FutStreetNoFondo.png" alt="FUT STREET Clothing" width={48} height={48} priority /><span>FUT STREET</span></Link><nav className="nav-links" aria-label="Navegación principal"><Link href="/catalogo">Catálogo</Link><Link href="/#la-marca">La marca</Link><Link href="/#contacto">Contacto</Link></nav><Link href="/catalogo" className="nav-cta">Ver camisetas <span>↗</span></Link></div></header>; }
