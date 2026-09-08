@@ -8,7 +8,7 @@ export const leagues: { name: League; country: string; code: string }[] = [
   { name: "Serie A", country: "Italia", code: "IT" },
 ];
 export const products: Product[] = [
-  { id: 1, name: "FS Blackout 01", slug: "fs-blackout-01", league: "LaLiga", category: "Diseño propio", team: "FUT STREET", description: "Camiseta de inspiración futbolera con estética nocturna y corte cómodo para la calle.", sizes: ["S", "M", "L", "XL"], badge: "Novedad", accent: "lime", imageLabel: "BLACKOUT" },
+  { id: 1, name: "REAL MADRID CF", slug: "fs-blackout-01", league: "LaLiga", category: "Primera equipación · ejemplo", team: "REAL MADRID CF", description: "Ejemplo de ficha por equipo: elige una equipación y consulta disponibilidad antes de pedirla.", sizes: ["S", "M", "L", "XL"], badge: "Novedad", accent: "lime", imageLabel: "REAL MADRID" },
   { id: 2, name: "Street Club 90", slug: "street-club-90", league: "Premier League", category: "Diseño propio", team: "FUT STREET", description: "Una camiseta retro con espíritu de grada, detalles deportivos y mucha personalidad.", sizes: ["S", "M", "L"], badge: "Destacada", accent: "orange", imageLabel: "CLUB 90" },
   { id: 3, name: "Away Lines 02", slug: "away-lines-02", league: "Ligue 1", category: "Colección away", team: "FUT STREET", description: "Diseño ligero y deportivo pensado para combinar con tu look de diario.", sizes: ["M", "L", "XL"], accent: "blue", imageLabel: "AWAY" },
   { id: 4, name: "Concrete Football", slug: "concrete-football", league: "Bundesliga", category: "Streetwear", team: "FUT STREET", description: "Gráfica urbana, tejido deportivo y una silueta relajada para moverte sin límites.", sizes: ["S", "M", "L", "XL"], accent: "pink", imageLabel: "CONCRETE" },

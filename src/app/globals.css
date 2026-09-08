@@ -11,6 +11,29 @@
 .logo-brand img { width:42px; height:42px; object-fit:contain; }
 .catalog-link { font-size:11px; font-weight:800; text-decoration:underline; text-underline-offset:4px; white-space:nowrap; }
 .league-section { border-top:1px solid var(--line); margin-bottom:86px; padding-top:38px; }
+.kit-showcase { min-width:0; }
+.kit-controls { margin-top:34px; }
+.product-detail > .kit-image-wrap { grid-column:1; grid-row:1 / span 2; }
+.kit-showcase-head { display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; }
+.kit-showcase-head .eyebrow { margin:0; }
+.kit-showcase-note { color:#777; font-size:10px; text-transform:uppercase; letter-spacing:.12em; }
+.kit-tabs { display:flex; flex-direction:column; gap:8px; margin-bottom:14px; }
+.kit-tab { width:100%; display:flex; justify-content:space-between; align-items:center; border:1px solid var(--ink); background:transparent; padding:15px 13px; cursor:pointer; font:inherit; font-size:10px; font-weight:800; text-align:left; }
+.kit-tab span { margin-left:10px; font-size:14px; }
+.kit-tab.active, .kit-tab:hover:not(:disabled) { background:var(--ink); color:var(--paper); }
+.kit-tab-disabled { border-color:var(--line); color:#8a8881; cursor:not-allowed; }
+.kit-tab-disabled span { font-size:8px; text-transform:uppercase; letter-spacing:.08em; }
+.kit-image-wrap { min-height:620px; position:relative; overflow:hidden; background:#eeeae1; }
+.kit-image { object-fit:cover; object-position:center; }
+.kit-placeholder { height:100%; min-height:620px; display:grid; place-items:center; align-content:center; gap:12px; background:var(--acid); color:var(--ink); }
+.kit-placeholder span { font-size:clamp(130px,18vw,230px); line-height:.75; font-weight:900; letter-spacing:-.15em; }
+.kit-placeholder small { font-size:10px; text-transform:uppercase; letter-spacing:.16em; font-weight:800; }
+.kit-carousel-arrow { position:absolute; z-index:2; top:50%; width:42px; height:42px; display:grid; place-items:center; border:0; border-radius:50%; background:rgba(243,240,231,.92); color:var(--ink); cursor:pointer; transform:translateY(-50%); box-shadow:0 2px 12px rgba(9,10,9,.14); transition:background .2s ease,transform .2s ease; }
+.kit-carousel-arrow svg { width:20px; height:20px; fill:none; stroke:currentColor; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
+.kit-carousel-arrow:hover { background:var(--acid); transform:translateY(-50%) scale(1.06); }
+.kit-carousel-prev { left:16px; }
+.kit-carousel-next { right:16px; }
+.kit-carousel-count { position:absolute; z-index:2; right:16px; bottom:16px; background:var(--ink); color:var(--paper); padding:8px 10px; font-size:10px; font-weight:800; }
 .league-section .section-heading { margin-bottom:28px; }
 .league-section h2 { font-size:clamp(38px,5vw,64px); letter-spacing:-.08em; line-height:.9; margin:0; }
 .league-note { font-size:11px; line-height:1.5; color:#66635d; text-align:right; }
@@ -37,8 +60,17 @@ a:focus-visible, button:focus-visible, input:focus-visible { outline:3px solid v
   .nav-inner { min-height:68px; padding-top:8px; flex-wrap:wrap; row-gap:0; }
   .nav-links { display:flex; order:3; width:100%; margin:0; padding:9px 0 11px; overflow-x:auto; gap:20px; border-top:1px solid var(--line); font-size:10px; }
   .nav-links a { white-space:nowrap; }
+  .product-detail { display:grid; grid-template-columns:1fr; gap:28px; }
+  .product-detail > .kit-image-wrap { grid-column:1; grid-row:1; }
+  .kit-controls { grid-column:1; grid-row:2; }
+  .product-detail > .product-info { grid-column:1; grid-row:3; }
+  .kit-image-wrap, .kit-placeholder { min-height:480px; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior:auto; }
   *, *::before, *::after { animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; }
 }
+.whatsapp-button { display:grid; grid-template-columns:auto 1fr auto; align-items:center; gap:14px; padding:14px 16px; }
+.whatsapp-button span:nth-child(2) { text-align:center; }
+.whatsapp-icon { width:24px; height:24px; }
+.availability { margin-top:10px; }
