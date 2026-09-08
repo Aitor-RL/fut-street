@@ -1,6 +1,6 @@
 import { Footer } from "@/components/Footer";
 import { Navbar } from "@/components/Navbar";
 import { CatalogGrid } from "@/components/CatalogGrid";
-import { products } from "@/data/products";
+import { leagues, products } from "@/data/products";
 export const metadata = { title: "Catálogo | FUT STREET", description: "Descubre la colección de camisetas FUT STREET." };
-export default function CatalogoPage() { return <><Navbar /><main className="catalog-page shell"><div className="page-intro"><p className="eyebrow">Colección 01 / 2025</p><h1>El catálogo.</h1><p>Diseños propios, espíritu futbolero y actitud de calle.</p></div><CatalogGrid products={products} /></main><Footer /></>; }
+export default function CatalogoPage() { return <><Navbar /><main className="catalog-page shell"><div className="page-intro"><p className="eyebrow">Colección 01 / 2025</p><h1>El catálogo.</h1><p>Explora camisetas por competición y descubre el universo FUT STREET.</p></div><section className="league-section" aria-labelledby="league-heading"><div className="section-heading"><div><p className="eyebrow">01 / Competiciones</p><h2 id="league-heading">Elige tu liga.</h2></div><p className="league-note">Identificadores visuales propios<br />para cada colección.</p></div><div className="league-grid">{leagues.map((league) => <div className="league-tile" key={league.name}><span className="league-code">{league.code}</span><div><h3>{league.name}</h3><p>{league.country}</p></div><span className="league-arrow">↗</span></div>)}</div></section><CatalogGrid products={products} /></main><Footer /></>; }

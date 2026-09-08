@@ -211,6 +211,10 @@ Ejemplos:
 
 Estos enlaces deben aparecer en el footer y pueden repetirse en la portada, especialmente cerca del bloque de contacto.
 
+### Secciones por competición
+
+El catálogo se organiza por **LaLiga**, **Premier League**, **Ligue 1**, **Bundesliga** y **Serie A**. La web utiliza identificadores propios de país (`ES`, `EN`, `FR`, `DE`, `IT`) en lugar de escudos oficiales. No descargar, copiar ni reutilizar logotipos de ligas o equipos sin licencia escrita.
+
 ### Lemas aprobados
 
 - **Donde el fútbol se viste**
