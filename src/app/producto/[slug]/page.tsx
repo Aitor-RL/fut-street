@@ -28,6 +28,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const title = `${product.name} — ${product.team}`;
   const description = `${product.description} Descubre las equipaciones y tallas disponibles de ${product.name} en FUT STREET.`;
 
+  const primaryImage =
+    product.kits?.[0]?.images?.[0]?.image || "/FutStreetNoFondo.png";
+
   return {
     title,
     description,
@@ -41,7 +44,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       type: "website",
       images: [
         {
-          url: "/kits/rm1.png",
+          url: primaryImage,
           width: 800,
           height: 800,
           alt: `Camiseta ${product.name} - ${product.team}`,
@@ -52,7 +55,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       card: "summary_large_image",
       title: `${title} | FUT STREET`,
       description,
-      images: ["/kits/rm1.png"],
+      images: [primaryImage],
     },
   };
 }
@@ -63,12 +66,15 @@ export default async function ProductPage({ params }: Props) {
 
   if (!product) notFound();
 
+  const primaryImage =
+    product.kits?.[0]?.images?.[0]?.image || "/FutStreetNoFondo.png";
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Product",
     name: product.name,
     description: product.description,
-    image: "/kits/rm1.png",
+    image: primaryImage,
     brand: {
       "@type": "Brand",
       name: product.team || "FUT STREET",
@@ -98,23 +104,12 @@ export default async function ProductPage({ params }: Props) {
         <Link className="back-link" href="/catalogo">
           ← Volver al catálogo
         </Link>
-        <KitSwitcher teamName={product.team}>
+        <KitSwitcher teamName={product.team} kits={product.kits}>
           <p className="eyebrow">
             {product.category} · {product.team}
           </p>
           <h1>{product.name}</h1>
           <p className="detail-description">{product.description}</p>
-          <div className="size-block">
-            <div>
-              <span className="eyebrow">Tallas disponibles</span>
-              <Link href="/tallas">Guía de tallas ↗</Link>
-            </div>
-            <div className="size-list">
-              {product.sizes.map((size) => (
-                <span key={size}>{size}</span>
-              ))}
-            </div>
-          </div>
           <WhatsAppButton />
           <p className="availability">
             Consulta disponibilidad y haz tu pedido a través de WhatsApp.

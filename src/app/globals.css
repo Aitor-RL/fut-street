@@ -333,6 +333,36 @@ p {
   color: #391d24;
 }
 
+.art-red {
+  background: #d82b38;
+  color: #ffffff;
+}
+
+.art-green {
+  background: #1e7e43;
+  color: #ffffff;
+}
+
+.art-sky {
+  background: #62a2dd;
+  color: #101c26;
+}
+
+.art-yellow {
+  background: #e6b800;
+  color: #1a1600;
+}
+
+.art-purple {
+  background: #783d99;
+  color: #ffffff;
+}
+
+.art-dark {
+  background: #202224;
+  color: #f0f0f0;
+}
+
 .art-number {
   position: absolute;
   top: 16px;
@@ -615,6 +645,7 @@ p {
   line-height: 1.55;
   color: #62605a;
   max-width: 420px;
+  margin: 20px 0 28px;
 }
 
 .size-block {

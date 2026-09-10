@@ -3,29 +3,32 @@
 import Image from "next/image";
 import { Children, useRef, useState } from "react";
 import type { ReactNode, TouchEvent } from "react";
-
-type Kit = { name: string };
-
-const kits: Kit[] = [{ name: "Primera equipación" }];
-const kitImages = [
-  { image: "/kits/rm1.png", alt: "Camiseta del Real Madrid, vista frontal" },
-  { image: "/kits/rm1b.jpg", alt: "Camiseta del Real Madrid, vista trasera" },
-];
+import type { Kit } from "@/data/products";
 
 export function KitSwitcher({
   teamName,
+  kits = [],
   children,
 }: {
   teamName: string;
+  kits?: Kit[];
   children: ReactNode;
 }) {
-  const [selectedKit, setSelectedKit] = useState<number | null>(0);
+  const [selectedKit, setSelectedKit] = useState<number | null>(kits.length > 0 ? 0 : null);
   const [imageIndex, setImageIndex] = useState(0);
 
   const touchStartX = useRef<number | null>(null);
   const touchEndX = useRef<number | null>(null);
 
   const minSwipeDistance = 45;
+
+  const currentKit = selectedKit !== null && kits[selectedKit] ? kits[selectedKit] : null;
+  const kitImages = currentKit ? currentKit.images : [];
+
+  const handleSelectKit = (index: number) => {
+    setSelectedKit(index);
+    setImageIndex(0);
+  };
 
   const onTouchStart = (e: TouchEvent) => {
     touchEndX.current = null;
@@ -37,7 +40,7 @@ export function KitSwitcher({
   };
 
   const onTouchEnd = () => {
-    if (!touchStartX.current || !touchEndX.current) return;
+    if (!touchStartX.current || !touchEndX.current || kitImages.length <= 1) return;
     const distance = touchStartX.current - touchEndX.current;
     const isLeftSwipe = distance > minSwipeDistance;
     const isRightSwipe = distance < -minSwipeDistance;
@@ -53,6 +56,8 @@ export function KitSwitcher({
   const heading = content.slice(0, 2);
   const details = content.slice(2);
 
+  const currentImage = kitImages[imageIndex] || kitImages[0];
+
   return (
     <div className="product-detail">
       <div
@@ -61,94 +66,93 @@ export function KitSwitcher({
         onTouchMove={onTouchMove}
         onTouchEnd={onTouchEnd}
       >
-        {selectedKit === null ? (
+        {!currentImage ? (
           <div className="kit-placeholder">
-            <span>RM</span>
-            <small>Selecciona una equipación</small>
+            <span>{teamName.slice(0, 2).toUpperCase()}</span>
+            <small>Sin imágenes disponibles</small>
           </div>
         ) : (
           <>
             <Image
-              src={kitImages[imageIndex].image}
-              alt={kitImages[imageIndex].alt}
+              src={currentImage.image}
+              alt={currentImage.alt}
               fill
               sizes="(max-width: 720px) 100vw, 55vw"
               className="kit-image"
               priority
             />
-            <button
-              className="kit-carousel-arrow kit-carousel-prev"
-              type="button"
-              aria-label="Ver imagen anterior"
-              onClick={() =>
-                setImageIndex(
-                  (imageIndex - 1 + kitImages.length) % kitImages.length
-                )
-              }
-            >
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="m14.5 5-7 7 7 7" />
-              </svg>
-            </button>
-            <button
-              className="kit-carousel-arrow kit-carousel-next"
-              type="button"
-              aria-label="Ver siguiente imagen"
-              onClick={() =>
-                setImageIndex((imageIndex + 1) % kitImages.length)
-              }
-            >
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="m9.5 5 7 7-7 7" />
-              </svg>
-            </button>
-            <div className="kit-carousel-dots" aria-hidden="true">
-              {kitImages.map((_, i) => (
-                <span
-                  key={i}
-                  className={`kit-dot ${i === imageIndex ? "active" : ""}`}
-                />
-              ))}
-            </div>
-            <span className="kit-carousel-count">
-              {imageIndex + 1} / {kitImages.length}
-            </span>
+            {kitImages.length > 1 && (
+              <>
+                <button
+                  className="kit-carousel-arrow kit-carousel-prev"
+                  type="button"
+                  aria-label="Ver imagen anterior"
+                  onClick={() =>
+                    setImageIndex(
+                      (imageIndex - 1 + kitImages.length) % kitImages.length
+                    )
+                  }
+                >
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="m14.5 5-7 7 7 7" />
+                  </svg>
+                </button>
+                <button
+                  className="kit-carousel-arrow kit-carousel-next"
+                  type="button"
+                  aria-label="Ver siguiente imagen"
+                  onClick={() =>
+                    setImageIndex((imageIndex + 1) % kitImages.length)
+                  }
+                >
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="m9.5 5 7 7-7 7" />
+                  </svg>
+                </button>
+                <div className="kit-carousel-dots" aria-hidden="true">
+                  {kitImages.map((_, i) => (
+                    <span
+                      key={i}
+                      className={`kit-dot ${i === imageIndex ? "active" : ""}`}
+                    />
+                  ))}
+                </div>
+                <span className="kit-carousel-count">
+                  {imageIndex + 1} / {kitImages.length}
+                </span>
+              </>
+            )}
           </>
         )}
       </div>
       <div className="product-info">
         {heading}
-        <div className="kit-controls">
-          <div className="kit-showcase-head">
-            <span className="eyebrow">Equipaciones</span>
-            <span className="kit-showcase-note">Vista previa · ejemplo</span>
-          </div>
-          <div
-            className="kit-tabs"
-            role="tablist"
-            aria-label={`Equipaciones de ${teamName}`}
-          >
-            {kits.map((kit, index) => (
-              <button
-                className={selectedKit === index ? "kit-tab active" : "kit-tab"}
-                key={kit.name}
-                type="button"
-                role="tab"
-                aria-selected={selectedKit === index}
-                onClick={() => setSelectedKit(index)}
-              >
-                {kit.name} <span aria-hidden="true">↗</span>
-              </button>
-            ))}
-            <button
-              className="kit-tab kit-tab-disabled"
-              type="button"
-              disabled
+        {kits.length > 0 && (
+          <div className="kit-controls">
+            <div className="kit-showcase-head">
+              <span className="eyebrow">Equipaciones</span>
+              <span className="kit-showcase-note">Vista previa · catálogo</span>
+            </div>
+            <div
+              className="kit-tabs"
+              role="tablist"
+              aria-label={`Equipaciones de ${teamName}`}
             >
-              Segunda equipación <span>Próximamente</span>
-            </button>
+              {kits.map((kit, index) => (
+                <button
+                  className={selectedKit === index ? "kit-tab active" : "kit-tab"}
+                  key={kit.name}
+                  type="button"
+                  role="tab"
+                  aria-selected={selectedKit === index}
+                  onClick={() => handleSelectKit(index)}
+                >
+                  {kit.name} <span aria-hidden="true">↗</span>
+                </button>
+              ))}
+            </div>
           </div>
-        </div>
+        )}
         {details}
       </div>
     </div>
